@@ -83,9 +83,7 @@ function animation(){
             dy=-dy;
         }
        if (parseInt(y) > parseInt(innerHeight)){
-        setTimeout(function(){
             myfunction();
-        },3000);
        }
        
         x += dx;

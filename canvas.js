@@ -1,3 +1,4 @@
+window.onload=myfunction=function(){
 var canvas = document.querySelector('canvas');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
@@ -52,7 +53,8 @@ c.fillStyle = 'red';
 c.fill();
 c.strokeStyle = 'black';
 c.stroke();
-//-------------------End Condition------------------------//
+
+//-------------------Game Conditions------------------------//
 document.onkeydown = checkKey;
 function animation(){
         document.onkeydown = checkKey;
@@ -74,15 +76,18 @@ function animation(){
         if (x+radius > innerWidth || x-radius< 0){
             dx=-dx;
         }
-        if (y-radius < 0){
+        else if (y-radius < 0){
             dy=-dy;
         }
-        if( ((x-radius>=rX && x-radius<=rX+boxWidth) || (x+radius>=rX && x+radius<=rX+boxWidth))  && y+radius==rY && firstTime==0){
+        else if( ((x-radius>=rX && x-radius<=rX+boxWidth) || (x+radius>=rX && x+radius<=rX+boxWidth))  && y+radius==rY && firstTime==0){
             dy=-dy;
         }
-        if (y+radius == innerHeight)
-        console.log("game end");
-
+       if (parseInt(y) > parseInt(innerHeight)){
+        setTimeout(function(){
+            myfunction();
+        },3000);
+       }
+       
         x += dx;
         y += dy;
         firstTime=0;
@@ -91,4 +96,5 @@ function animation(){
 
 function init(){
     animation();
+}
 }
